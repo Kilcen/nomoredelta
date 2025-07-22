@@ -121,5 +121,6 @@ end)
 
 proceedBtn.MouseButton1Click:Connect(function()
 	screenGui:Destroy()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmaadV99/mutationvisual/refs/heads/main/petmutation"))()
+	task.wait(0.5)
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Ben141-Hub/speedhubx/refs/heads/main/speedhub"))()
 end)
